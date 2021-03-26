@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ScoreProvider from './Contexts/ScoreContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ScoreProvider>
     <App />
-  </React.StrictMode>,
+  </ScoreProvider>,
   document.getElementById('root')
 );
 

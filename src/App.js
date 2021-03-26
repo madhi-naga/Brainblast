@@ -1,5 +1,5 @@
 import React from "react";
-import mainMenu from "./Components/mainMenu"
+import MainMenu from "./Components/MainMenu"
 import Navbar from "./Components/NavBar"
 import Leaderboard from "./Components/Leaderboard"
 import Instructions from "./Components/Instructions"
@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Navbar></Navbar>
-      <Route exact path="/" component={mainMenu} />
-      <Route path="/home" component={mainMenu} />
+      <Route exact path="/" component={MainMenu} />
+      <Route path="/home" component={MainMenu} />
       <Route path="/leaderboard" component={Leaderboard} />
       <Route path="/instructions" component={Instructions} />
     </Router>
