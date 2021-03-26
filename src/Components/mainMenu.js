@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, {useContext} from "react";
 import {ScoreContext} from "../Contexts/ScoreContext";
+import {WeighScores} from "../Functions/WeighScores";
 
 
 function MainMenu(){
-    useEffect(() => {
-      }, []);
     const scoreContext =  useContext(ScoreContext);
-    scoreContext.setUsername("sss");
-    scoreContext.setScore1(1);
+    WeighScores();
     return (
         <div>
             username: {scoreContext.username} totalScore: {scoreContext.totalScore} Score1: {scoreContext.score1}
