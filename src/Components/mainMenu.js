@@ -1,7 +1,7 @@
 function mainMenu() {
   return (
     <div>
-      test
+      main
     </div>
   );
 }
