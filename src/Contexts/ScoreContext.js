@@ -4,7 +4,7 @@ export const ScoreContext = createContext();
 
 
 const ScoreCont = ({ children }) => {
-  const [username, setUsername] = useState("Test Username");
+  const [username, setUsername] = useState("SampleUser");
   const [score1, setScore1] = useState(0);
   const [score2, setScore2] = useState(0);
   const [score3, setScore3] = useState(0);
