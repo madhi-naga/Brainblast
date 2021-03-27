@@ -19,11 +19,8 @@ export function WeighScores(){
 
     for (var i = 0; i < 5; i++){
         let newScore = scoreArray[i]-scoreArray[i]*(ranks[i]*0.2);
-        console.log(` weighted score ${i+1}: ${newScore}`);
-        console.log("xd");
         totalScore+=newScore;
     }
-    // scoreContext.setTotalScore(totalScore);
 
     console.log(`totalScore: ${totalScore}`)
 
