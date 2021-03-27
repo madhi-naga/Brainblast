@@ -6,6 +6,7 @@ function Game2Test(){
     
     function calcScores(){
         //need to incremenet the score twice within the function bc for some reason the context doesn't update until you exit component
+        //b
         var score1 = scoreContext.score1;
         var score2 = scoreContext.score2 + 1; 
         var score3 = scoreContext.score3;
