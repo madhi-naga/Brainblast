@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import { WeighScores } from "../Functions/WeighScores";
 
 export const ScoreContext = createContext();
 
@@ -10,18 +9,18 @@ const ScoreCont = ({ children }) => {
   const [score2, setScore2] = useState(0);
   const [score3, setScore3] = useState(0);
   const [score4, setScore4] = useState(0);
-  const [score5, setScore5] = useState(0);
-  const [weightedScore1, setWeightedScore1] = useState(100);
-  const [weightedScore2, setWeightedScore2] = useState(80);
-  const [weightedScore3, setWeightedScore3] = useState(60);
-  const [weightedScore4, setWeightedScore4] = useState(40);
-  const [weightedScore5, setWeightedScore5] = useState(20);
+  const [score5, setScore5] = useState(10);
+  const [weightedScore1, setWeightedScore1] = useState(0);
+  const [weightedScore2, setWeightedScore2] = useState(0);
+  const [weightedScore3, setWeightedScore3] = useState(0);
+  const [weightedScore4, setWeightedScore4] = useState(0);
+  const [weightedScore5, setWeightedScore5] = useState(10);
   const [totalScore, setTotalScore] = useState(0);
 
 
   useEffect(() => {
-    setTotalScore(score1+score2+score3+score4+score5);
-  },[score1,score2,score3,score4,score5]);
+    setTotalScore(weightedScore1+weightedScore2+weightedScore3+weightedScore4+weightedScore5);
+  },[weightedScore1,weightedScore2,weightedScore3,weightedScore4,weightedScore5]);
 
   return (
     <div>

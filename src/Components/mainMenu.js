@@ -1,13 +1,12 @@
 import React, {useContext} from "react";
 import {ScoreContext} from "../Contexts/ScoreContext";
-import {WeighScores} from "../Functions/WeighScores";
+
 import { Link } from "react-router-dom";
 import "./MainMenu.css";
 
 
 function MainMenu(){
     const scoreContext =  useContext(ScoreContext);
-    console.log(scoreContext.totalScore);
     return (
             <div><link
                 href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
@@ -24,11 +23,11 @@ function MainMenu(){
             <h1 className ="username">Logged in as {scoreContext.username}</h1>
             <h1 className ="totalScore">Total Score: {scoreContext.totalScore}</h1>
             
-            <h1 className ="score">Game 1 Score: {scoreContext.score1} </h1>
-            <h1 className ="score">Game 2 Score: {scoreContext.score2} </h1>
-            <h1 className ="score">Game 3 Score: {scoreContext.score3} </h1>
-            <h1 className ="score">Game 4 Score: {scoreContext.score4} </h1>
-            <h1 className ="score">Game 5 Score: {scoreContext.score5} </h1>
+            <h1 className ="score">Game 1 Score: {scoreContext.score1} | Weighted Score: {scoreContext.weightedScore1} </h1>
+            <h1 className ="score">Game 2 Score: {scoreContext.score2} | Weighted Score: {scoreContext.weightedScore2}</h1>
+            <h1 className ="score">Game 3 Score: {scoreContext.score3} | Weighted Score: {scoreContext.weightedScore3}</h1>
+            <h1 className ="score">Game 4 Score: {scoreContext.score4} | Weighted Score: {scoreContext.weightedScore4}</h1>
+            <h1 className ="score">Game 5 Score: {scoreContext.score5} | Weighted Score: {scoreContext.weightedScore5}</h1>
         </div>
     );
 }
