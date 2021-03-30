@@ -13,6 +13,8 @@ function ErrorMessage(){
                     href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
                     rel="stylesheet"
                 ></link>
+            <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
             <h1 className ="titleHeader">BrainBlast!</h1>
             <h1 className ="error">An error occured. {scoreContext.error}</h1>
             <Link to={"/"} role="button" className="btn btn-danger" id ="backButton">Enter a new username </Link>

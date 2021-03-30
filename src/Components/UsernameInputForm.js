@@ -34,10 +34,8 @@ function UsernameInputForm() {
     if (!checked){
         return (
             <div>
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
-                    rel="stylesheet"
-                ></link>
+                <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"/>
                 <h1 className ="titleHeader">BrainBlast!</h1>
                 <div className = "inputContainer">
                     <label className="inputLabel">Username</label>
