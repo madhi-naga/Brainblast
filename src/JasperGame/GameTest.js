@@ -5,14 +5,8 @@ function GameTest(){
     const scoreContext = useContext(ScoreContext);
     
     function calcScores(){
-        //need to incremenet the score twice within the function bc for some reason the context doesn't update until you exit component
-        var score1 = scoreContext.score1 + 1;
-        var score2 = scoreContext.score2;
-        var score3 = scoreContext.score3;
-        var score4 = scoreContext.score4;
-        var score5 = scoreContext.score5;
-
-        var scoreArray = [score1,score2,score3,score4,score5];
+        scoreContext.setScore1(scoreContext.score1+1);
+        var scoreArray = [scoreContext.score1,scoreContext.score2,scoreContext.score3,scoreContext.score4,scoreContext.score5];
 
         var sorted = scoreArray.slice().sort(function(a,b){return b-a})
         var ranks = scoreArray.slice().map(function(v){ return sorted.indexOf(v)});
@@ -42,7 +36,6 @@ function GameTest(){
                     break;
             }
         }
-        scoreContext.setScore1(scoreContext.score1+1);
         scoreContext.setTotalScore(totalScore);   
     }
     

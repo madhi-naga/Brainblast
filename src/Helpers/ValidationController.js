@@ -1,6 +1,4 @@
 
-import {ScoreContext} from "../Contexts/ScoreContext";
-import {useContext} from "react";
 import ValidationSystem from "../Helpers/ValidationSystem";
 
 function ValidationController(username,scoreContext){
