@@ -1,5 +1,6 @@
 import { useContext} from "react";
 import {ScoreContext} from "../Contexts/ScoreContext";
+import CalcScores from "../Helpers/CalcScores";
 
 function Game2Test(){
 
