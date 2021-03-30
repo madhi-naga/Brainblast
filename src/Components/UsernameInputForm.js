@@ -10,20 +10,17 @@ function UsernameInputForm() {
     const scoreContext = useContext(ScoreContext);
 
     function onClick(){
+        
         var validate = ValidationSystem(username);
         if (validate !==1){
             if (validate ===2){
                 scoreContext.setError("The username you entered was too short. Enter a username at least 3 characters long.");
-                setChecked(true);
             }
             else if (validate === 3){
                 scoreContext.setError("The username you entered was too long. Enter a username 10 characters long or less.");
-                setChecked(true);
             }
             else{
-                scoreContext.setUsername(username);
-                console.log("verified");
-                
+                scoreContext.setUsername(username);   
             }
             setChecked(true);
         }
