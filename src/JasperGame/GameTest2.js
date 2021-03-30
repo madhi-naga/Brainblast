@@ -2,13 +2,29 @@ import { useContext} from "react";
 import {ScoreContext} from "../Contexts/ScoreContext";
 
 function Game2Test(){
+
     const scoreContext = useContext(ScoreContext);
+    const unique = [];
     
     function calcScores(){
-        scoreContext.setScore2(scoreContext.score2+1);
-        var scoreArray = [scoreContext.score1,scoreContext.score2,scoreContext.score3,scoreContext.score4,scoreContext.score5];
+        function repeated(rank){
+            if (unique.includes(rank)){
+                return repeated(rank+1);
+            }
+            else{
+                unique.push(rank);
+                return rank;
+            }
+        }
+        var score1 = scoreContext.score1;
+        var score2 = scoreContext.score2 + 1; 
+        var score3 = scoreContext.score3;
+        var score4 = scoreContext.score4;
+        var score5 = scoreContext.score5;
+
+        var scoreArray = [score1,score2,score3,score4,score5];
         var sorted = scoreArray.slice().sort(function(a,b){return b-a})
-        var ranks = scoreArray.slice().map(function(v){ return sorted.indexOf(v)});
+        var ranks = scoreArray.slice().map(function(v){return repeated(sorted.indexOf(v))});
         var totalScore = 0;
 
         for (var i = 0; i < 5; i++){
@@ -35,10 +51,10 @@ function Game2Test(){
                     break;
             }
         }
-        
+        scoreContext.setScore2(scoreContext.score2+1);
         scoreContext.setTotalScore(totalScore);   
     }
-    
+
     return(
         <div>
             <button

@@ -1,6 +1,5 @@
 
 function ValidationSystem(username){
-    console.log(username);
     if (username === ""){
         return 1;
     }
