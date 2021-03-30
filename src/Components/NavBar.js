@@ -9,7 +9,7 @@ function Navbar () {
             <Link to={"/"}>
                 <div className="navbar-brand">Brainblast</div>
             </Link>
-            <Link to={"/"}>
+            <Link to={"/menu"}>
                 <li className="nav-item nav-link">Menu</li>
             </Link>
             <Link to={"/leaderboard/"}>

@@ -5,6 +5,7 @@ export const ScoreContext = createContext();
 
 const ScoreCont = ({ children }) => {
   const [username, setUsername] = useState("SampleUser");
+  const [error, setError] = useState(null);
   const [score1, setScore1] = useState(0);
   const [score2, setScore2] = useState(0);
   const [score3, setScore3] = useState(0);
@@ -25,7 +26,7 @@ const ScoreCont = ({ children }) => {
   return (
     <div>
         <ScoreContext.Provider
-            value={{ username, setUsername, score1, setScore1 , score2, setScore2, score3, setScore3, 
+            value={{ username, setUsername, error, setError, score1, setScore1 , score2, setScore2, score3, setScore3, 
                 score4, setScore4, score5, setScore5, weightedScore1, setWeightedScore1, weightedScore2, 
                 setWeightedScore2, weightedScore3, setWeightedScore3,weightedScore4, setWeightedScore4,
                 weightedScore5, setWeightedScore5,totalScore, setTotalScore}}

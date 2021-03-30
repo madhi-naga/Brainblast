@@ -1,0 +1,20 @@
+.inputContainer {
+  width: 50%;
+  height: 30%;
+  margin-left: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
+
+.form-control {
+  width: 50%;
+}
+
+#submitButton {
+  margin-top: 2vh;
+  width: 50%;
+  height: 3vh;
+  padding-top: 0vh;
+}

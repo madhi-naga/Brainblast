@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ScoreProvider from './Contexts/ScoreContext';
+import MenuController from './Components/MenuController';
 
 ReactDOM.render(
-  <ScoreProvider>
-    <App />
-  </ScoreProvider>,
+  <MenuController></MenuController>,
   document.getElementById('root')
 );
 
