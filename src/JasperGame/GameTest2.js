@@ -4,55 +4,11 @@ import {ScoreContext} from "../Contexts/ScoreContext";
 function Game2Test(){
 
     const scoreContext = useContext(ScoreContext);
-    const unique = [];
+    
     
     function calcScores(){
-        function repeated(rank){
-            if (unique.includes(rank)){
-                return repeated(rank+1);
-            }
-            else{
-                unique.push(rank);
-                return rank;
-            }
-        }
-        var score1 = scoreContext.score1;
-        var score2 = scoreContext.score2 + 1; 
-        var score3 = scoreContext.score3;
-        var score4 = scoreContext.score4;
-        var score5 = scoreContext.score5;
-
-        var scoreArray = [score1,score2,score3,score4,score5];
-        var sorted = scoreArray.slice().sort(function(a,b){return b-a})
-        var ranks = scoreArray.slice().map(function(v){return repeated(sorted.indexOf(v))});
-        var totalScore = 0;
-
-        for (var i = 0; i < 5; i++){
-            var newScore = Math.round((scoreArray[i]-scoreArray[i]*(ranks[i]*0.2))*10)/10;
-            totalScore+=newScore;
-            switch(i){
-                case 0:
-                    scoreContext.setWeightedScore1(newScore);
-                    break;
-                case 1:
-                    scoreContext.setWeightedScore2(newScore);
-                    break;
-
-                case 2:
-                    scoreContext.setWeightedScore3(newScore);
-                    break;
-                case 3:
-                    scoreContext.setWeightedScore4(newScore);
-                    break;
-                case 4:
-                    scoreContext.setWeightedScore5(newScore);
-                    break;
-                default:
-                    break;
-            }
-        }
-        scoreContext.setScore2(scoreContext.score2+1);
-        scoreContext.setTotalScore(totalScore);   
+        var newScore = scoreContext.score2+1;
+        CalcScores(2,newScore,scoreContext);
     }
 
     return(
