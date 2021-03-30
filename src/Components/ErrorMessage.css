@@ -1,0 +1,17 @@
+.error {
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 2vh;
+}
+
+#backButton {
+  margin-top: 2vh;
+  width: 20%;
+  height: 10vh;
+  padding-top: 4vh;
+  margin-left: 40%;
+}
