@@ -28,7 +28,7 @@ function MemoryGame(){
       }, [reset]);
 
     useEffect(()=>{
-        if (currScore === 50)
+        if (currScore === 100)
             calcScores();
         if(lives === 0)
             calcScores();
@@ -37,7 +37,7 @@ function MemoryGame(){
 
     function random(){
         var rand = Math.random();
-        if (rand < 0.55 && seen.size > 1){ //random element from seen
+        if (rand < 0.50 && seen.size > 1){ //random element from seen
             var randElem = getRandomItem(seen);
             while (String(randElem)===String(previous)){
                 randElem = getRandomItem(seen);
@@ -46,7 +46,7 @@ function MemoryGame(){
             return randElem;
         }
         else{
-            if (0.55 <= rand && rand < 0.725){
+            if (0.50 <= rand && rand < 0.725){
                 if (words.length === 0){
                     setReset(reset+1);
                 }
@@ -85,7 +85,7 @@ function MemoryGame(){
 
     function onClickNew(){
         if(!seen.has(string)){
-            setCurrScore(currScore+1);
+            setCurrScore(currScore+2);
             setSeen(prev => new Set(prev.add(string)));
         }
         else{
@@ -96,7 +96,7 @@ function MemoryGame(){
 
     function onClickSeen(){
         if(seen.has(string)){
-            setCurrScore(currScore+1);
+            setCurrScore(currScore+2);
         }
         else{
             setLives(lives-1);
@@ -128,7 +128,7 @@ function MemoryGame(){
             </div>
         )
     }
-    else if(currScore === 50){
+    else if(currScore === 100){
         return(
             <div>
                 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
