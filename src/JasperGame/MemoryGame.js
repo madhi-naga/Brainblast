@@ -28,10 +28,12 @@ function MemoryGame(){
       }, [reset]);
 
     useEffect(()=>{
+        if (currScore === 50)
+            calcScores();
         if(lives === 0)
             calcScores();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[lives])
+    },[lives,currScore])
 
     function random(){
         var rand = Math.random();
@@ -106,13 +108,16 @@ function MemoryGame(){
     function onClickReset(){
         setReset(reset+1);
     }
-    if (lives > 0){
+    if (lives > 0 && currScore < 50){
         return(
             <div id="MemoryGameDisplay">
+                 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
                 <link
                         href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
                         rel="stylesheet"
                     ></link>
+                <h1 id ="titleHeader">Memory Game</h1>
+                <h1 id ="prompt">Have you seen this word/number?</h1>
                 <h1 id ="generated">{string}</h1>
                 <div className ="buttonContainer">
                     <button className ="btn btn-dark" onClick={onClickSeen}>Seen</button>
@@ -120,6 +125,23 @@ function MemoryGame(){
                 </div>
                 <h1 id ="currScore">Current Score: {currScore}</h1>
                 <h1 id ="lives">Lives Remaining: {lives}</h1>
+            </div>
+        )
+    }
+    else if(currScore === 50){
+        return(
+            <div>
+                <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
+                <link
+                        href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+                        rel="stylesheet"
+                    ></link>
+                <h1 id ="gameWonHeader">You Won!</h1>
+                <h1 id ="endScore">Your Score: {currScore}</h1>
+                <div className ="buttonContainerOver">
+                    <button className ="btn btn-dark" onClick={onClickReset}>Play again</button>
+                    <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Return to Menu </Link>
+                </div>
             </div>
         )
     }
@@ -131,7 +153,7 @@ function MemoryGame(){
                         href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
                         rel="stylesheet"
                     ></link>
-                <h1 id ="game3Header">Game Over</h1>
+                <h1 id ="gameOverHeader">Game Over</h1>
                 <h1 id ="endScore">Your Score: {currScore}</h1>
                 <div className ="buttonContainerOver">
                     <button className ="btn btn-dark" onClick={onClickReset}>Play again</button>

@@ -1,5 +1,5 @@
 #generated {
-  padding-top: 10%;
+  padding-top: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,6 +25,16 @@
   font-size: 4vh;
 }
 
+#prompt {
+  padding-top: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 4vh;
+}
+
 #lives {
   padding-top: 0%;
   display: flex;
@@ -37,6 +47,7 @@
 
 .buttonContainer {
   width: 15%;
+  padding-top: 1%;
   margin-left: 42.5%;
   display: flex;
   justify-content: space-between;
@@ -70,7 +81,34 @@
   padding-top: 14%;
 }
 
-#game3Header {
+#titleHeader {
+  padding-top: 0%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: 9vh;
+}
+
+#gameWonHeader {
+  color: rgb(23, 209, 116);
+  padding-top: 10%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: 9vh;
+}
+
+#gameOverHeader {
   color: rgb(226, 45, 124);
   padding-top: 10%;
   height: 100%;
