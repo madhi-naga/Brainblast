@@ -1,0 +1,81 @@
+#generated {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 10vh;
+}
+
+#currScore {
+  padding-top: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 4vh;
+}
+
+#endScore {
+  padding-top: 0%;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 4vh;
+}
+
+#lives {
+  padding-top: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 4vh;
+}
+
+.buttonContainer {
+  width: 15%;
+  margin-left: 42.5%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.buttonContainer > .btn {
+  width: 10vh;
+  height: 5vh;
+  padding-top: 4%;
+  color: white;
+}
+
+.buttonContainerOver {
+  padding-top: 3%;
+  width: 20%;
+  margin-left: 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.buttonContainerOver > .btn {
+  width: 15vh;
+  height: 5vh;
+  padding-top: 3%;
+  color: white;
+}
+
+#game3Header {
+  color: rgb(226, 45, 124);
+  padding-top: 10%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: 9vh;
+}

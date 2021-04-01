@@ -15,7 +15,11 @@
   display: block;
 }
 
-.btn {
+#g1,
+#g2,
+#g3,
+#g4,
+#g5 {
   width: 10%;
   height: 10vh;
   padding-top: 4%;
