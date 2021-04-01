@@ -16,7 +16,7 @@ function MemoryGame(){
     const [reset,setReset] = useState(0);
     const scoreContext = useContext(ScoreContext);
     var randomWords = require('random-words');
-    
+
     useEffect(() => {
         setSeen(new Set());
         setCurrScore(0);
@@ -24,17 +24,17 @@ function MemoryGame(){
         setWords(randomWords(50));
         setLives(3);
         setString(random());
-      }, [randomWords,reset]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [reset]);
 
-    useEffect(() => {
-        if (lives === 0){
+    useEffect(()=>{
+        if(lives === 0)
             calcScores();
-        }
-    }, [lives]);
-    
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[lives])
 
     function random(){
-        var rand =Math.random();
+        var rand = Math.random();
         if (rand < 0.55 && seen.size > 1){ //random element from seen
             var randElem = getRandomItem(seen);
             while (String(randElem)===String(previous)){
@@ -45,6 +45,9 @@ function MemoryGame(){
         }
         else{
             if (0.55 <= rand && rand < 0.725){
+                if (words.length === 0){
+                    setReset(reset+1);
+                }
                 var randWord = words[Math.floor(Math.random() * words.length)];
                 while (String(randWord)===String(previous)){
                     randWord = words[Math.floor(Math.random() * words.length)];
@@ -132,7 +135,7 @@ function MemoryGame(){
                 <h1 id ="endScore">Your Score: {currScore}</h1>
                 <div className ="buttonContainerOver">
                     <button className ="btn btn-dark" onClick={onClickReset}>Play again</button>
-                    <Link to={"/menu"} role="button" className="btn btn-dark">Return to Menu </Link>
+                    <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Return to Menu </Link>
                 </div>
             </div>
         )

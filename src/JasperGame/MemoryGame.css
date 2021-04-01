@@ -61,9 +61,13 @@
 
 .buttonContainerOver > .btn {
   width: 15vh;
-  height: 5vh;
+  height: 10vh;
   padding-top: 3%;
   color: white;
+}
+
+.buttonContainerOver > #goMenu {
+  padding-top: 14%;
 }
 
 #game3Header {
