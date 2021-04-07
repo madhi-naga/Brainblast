@@ -22,7 +22,7 @@ function App() {
       <Route path="/game1" component={GameTest} />
       <Route path="/game2" component={GameTest2} />
       <Route path="/game3" component={MemoryGame} />
-      <Route path="/game4" component={JiahaoGame} />
+      <Route path="/game4" component={NumberHunt} />
       <Route path="/game5" component={GameTest} />
     </Router>
   );
