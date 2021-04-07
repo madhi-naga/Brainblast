@@ -1,0 +1,56 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+}
+
+.clear {
+  clear: both;
+  content: "";
+}
+
+.game {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cell {
+  background: #7b7b7b;
+  border: 1px solid #fff;
+  float: left;
+  line-height: 45px;
+  height: 45px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cell-hidden {
+  background: #424242;
+  border: 1px solid #fff;
+  float: left;
+  line-height: 45px;
+  height: 45px;
+  text-align: center;
+  width: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.info {
+    background: transparent;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
