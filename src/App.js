@@ -7,6 +7,7 @@ import UsernameInputForm from "./Components/UsernameInputForm";
 import GameTest from "./JasperGame/GameTest";
 import GameTest2 from "./JasperGame/GameTest2";
 import MemoryGame from "./JasperGame/MemoryGame";
+import NumberHunt from "./JiahaoGame/MemoryGame";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
@@ -21,7 +22,7 @@ function App() {
       <Route path="/game1" component={GameTest} />
       <Route path="/game2" component={GameTest2} />
       <Route path="/game3" component={MemoryGame} />
-      <Route path="/game4" component={GameTest} />
+      <Route path="/game4" component={JiahaoGame} />
       <Route path="/game5" component={GameTest} />
     </Router>
   );
