@@ -218,6 +218,7 @@ class Board extends React.Component {
         return score;
     }
 
+    //Left click on cell
     handleCellClick(x, y) {
         if (this.state.boardData[x][y].revealed || this.state.boardData[x][y].flagged) {
             return null;
@@ -258,7 +259,8 @@ class Board extends React.Component {
         })
     }
 
-    handleContextMenu(e, x, y) {
+    //Right click on cell
+    handleRightClick(e, x, y) {
         //Stops the right-click menu from appearing
         e.preventDefault();
 
@@ -294,10 +296,9 @@ class Board extends React.Component {
                 }
             }
             if (!notEqual) {
-                var totalScore = this.state.score + this.getFlagScore();
                 this.setState({
                     gameOver: "You win.",
-                    score: totalScore
+                    score: 100
                 });
                 this.revealBoard();
             }
@@ -310,16 +311,16 @@ class Board extends React.Component {
     }
 
     renderBoard(board) {
-        return board.map((datarow) => {
-            return datarow.map((dataitem) => {
+        return board.map((row) => {
+            return row.map((cell) => {
                 return (
-                    <div key={dataitem.x * datarow.length + dataitem.y}>
+                    <div key={cell.x * row.length + cell.y}>
                         <Cell
-                            onClick={() => this.handleCellClick(dataitem.x, dataitem.y)}
-                            cMenu={(e) => this.handleContextMenu(e, dataitem.x, dataitem.y)}
-                            value={dataitem}
+                            onClick={() => this.handleCellClick(cell.x, cell.y)}
+                            cMenu={(e) => this.handleRightClick(e, cell.x, cell.y)}
+                            value={cell}
                         />
-                        {(datarow[datarow.length - 1] === dataitem) ? <div className="clear" /> : ""}
+                    {(row[row.length - 1] === cell) ? <div className="clear" /> : ""}
                     </div>
                 );
             })
