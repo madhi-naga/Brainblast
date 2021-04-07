@@ -7,7 +7,7 @@ import UsernameInputForm from "./Components/UsernameInputForm";
 import GameTest from "./JasperGame/GameTest";
 import GameTest2 from "./JasperGame/GameTest2";
 import MemoryGame from "./JasperGame/MemoryGame";
-import NumberHunt from "./JiahaoGame/MemoryGame";
+import NumberHunt from "./JiahaoGame/NumberHunt";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
