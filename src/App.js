@@ -9,6 +9,7 @@ import GameTest2 from "./JasperGame/GameTest2";
 import MemoryGame from "./JasperGame/MemoryGame";
 import NumberHunt from "./JiahaoGame/NumberHunt";
 import Minesweeper from "./JonathanGame/Minesweeper";
+import AimTrainer from "./TevisGame/AimTrainer"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
@@ -24,7 +25,7 @@ function App() {
       <Route path="/game2" component={GameTest} />
       <Route path="/game3" component={MemoryGame} />
       <Route path="/game4" component={NumberHunt} />
-      <Route path="/game5" component={MemoryGame} />
+      <Route path="/game5" component={AimTrainer} />
     </Router>
   );
 }
