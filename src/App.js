@@ -10,6 +10,7 @@ import MemoryGame from "./JasperGame/MemoryGame";
 import NumberHunt from "./JiahaoGame/NumberHunt";
 import Minesweeper from "./JonathanGame/Minesweeper";
 import AimTrainer from "./TevisGame/AimTrainer"
+import ReverseWord from "./MadhiGame/ReverseWord"
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
@@ -22,7 +23,7 @@ function App() {
       <Route path="/leaderboard" component={Leaderboard} />
       <Route path="/instructions" component={Instructions} />
       <Route path="/game1" component={Minesweeper} />
-      <Route path="/game2" component={GameTest} />
+      <Route path="/game2" component={ReverseWord} />
       <Route path="/game3" component={MemoryGame} />
       <Route path="/game4" component={NumberHunt} />
       <Route path="/game5" component={AimTrainer} />
