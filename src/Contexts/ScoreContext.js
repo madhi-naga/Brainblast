@@ -10,12 +10,12 @@ const ScoreCont = ({ children }) => {
   const [score2, setScore2] = useState(0);
   const [score3, setScore3] = useState(0);
   const [score4, setScore4] = useState(0);
-  const [score5, setScore5] = useState(10);
+  const [score5, setScore5] = useState(0);
   const [weightedScore1, setWeightedScore1] = useState(0);
   const [weightedScore2, setWeightedScore2] = useState(0);
   const [weightedScore3, setWeightedScore3] = useState(0);
   const [weightedScore4, setWeightedScore4] = useState(0);
-  const [weightedScore5, setWeightedScore5] = useState(10);
+  const [weightedScore5, setWeightedScore5] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
 
 

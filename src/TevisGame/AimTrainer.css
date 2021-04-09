@@ -21,6 +21,26 @@
     font-size: 30px;
 }
 
+#startButton {
+    width: fit-content;
+    height: 110px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+#exitButton {
+    text-align: center;
+    width: fit-content;
+    height: 110px;
+    margin-right: 20px;
+}
+
+#gotoMenu {
+    text-align: center;
+    width: fit-content;
+    height: 110px;
+}
+
 #timer {
     padding-top: 0%;
     display: flex;
@@ -58,6 +78,7 @@
     background-color: lightgray;
     cursor: crosshair;
 }
+
 
 .target {
     width: 80px;
