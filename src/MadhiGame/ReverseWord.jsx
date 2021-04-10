@@ -117,7 +117,7 @@ export default class ReverseWord extends Component {
                 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
                 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" ></link>
                 <div className="game-header">
-                    <h1>Reverse Word</h1>
+                    <h1>Word Reverse</h1>
                     <h4>Reverse as many words as possible before the timer ends. Click Enter to submit each answer.
                     Red words add bonus points!</h4>
                     <h3 className="display-time">Time Left: {this.state.seconds}</h3>
