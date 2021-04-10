@@ -1,5 +1,8 @@
 import React from 'react';
 import Cell from './Cell';
+import { ScoreContext } from '../Contexts/ScoreContext'
+import CalcScores from "../Helpers/CalcScores";
+import { Link } from "react-router-dom";
 
 class Board extends React.Component {
     constructor(props) {
@@ -12,6 +15,8 @@ class Board extends React.Component {
             score: 0
         };
     }
+
+    static contextType = ScoreContext;
 
     initBoard(height, width, mines) {
         var board = [];
@@ -136,7 +141,9 @@ class Board extends React.Component {
 
         this.setState({
             boardData: updatedBoard
-        })
+        }, () => {
+            this.context.setScore1(this.state.score);
+        });
     }
 
     //Reveals the cell and any connected cells that should be revealed
@@ -230,7 +237,8 @@ class Board extends React.Component {
             this.setState({
                 gameOver: "You lose.",
                 score: totalScore
-            })
+
+            });
             this.revealBoard()
         }
         else {
@@ -286,7 +294,6 @@ class Board extends React.Component {
         if (mines === 0) {
             const mineArr = this.getMines(updatedBoard);
             const flagArr = this.getFlags(updatedBoard);
-            console.log(mineArr, flagArr);
             var notEqual = false;
             for (var i = 0; i < mineArr.length; i++) {
                 for (var j = 0; j < mineArr[0].length; j++) {
@@ -310,6 +317,15 @@ class Board extends React.Component {
         })
     }
 
+    restart() {
+        this.setState({
+            boardData: this.initBoard(this.props.height, this.props.width, this.props.mines),
+            gameOver: false,
+            mineCount: this.props.mines,
+            score: 0
+        });
+    }
+
     renderBoard(board) {
         return board.map((row) => {
             return row.map((cell) => {
@@ -331,7 +347,7 @@ class Board extends React.Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="board">
                     <h1 className="info">
                         Minesweeper
                     </h1>
@@ -339,15 +355,27 @@ class Board extends React.Component {
                         Score: {this.state.score}
                     </span>
                     <br/>
-                    <span className="info">
-                        Mines: {this.state.mineCount}
-                    </span>
-                    <br/>
-                    <span className="info">
-                        {this.state.gameOver}
-                    </span>
-                </div>
+                    {
+                        !this.state.gameOver &&
+                        <span className="info">
+                            Mines: {this.state.mineCount}
+                        </span>
+                    }
+                    {
+                        this.state.gameOver &&
+                        <span className="info">
+                            {this.state.gameOver}
+                        </span>
+                    }
+
                 { this.renderBoard(this.state.boardData) }
+            </div>
+                { this.state.gameOver &&
+                    <div>
+                        <button className="btn btn-dark" onClick={() => this.restart()}>Try Again</button>
+                        <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Return to Menu</Link>
+                    </div>
+                }
             </div>
         );
     }

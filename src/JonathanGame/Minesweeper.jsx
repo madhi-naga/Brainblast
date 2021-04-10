@@ -18,7 +18,7 @@ class Minesweeper extends React.Component {
 
         return (
             <div className="game">
-                <Board height={height} width={width} mines={mines} />
+                <Board height={height} width={width} mines={mines} history={this.props.history}/>
             </div>
         );
     }

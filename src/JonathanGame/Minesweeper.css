@@ -20,6 +20,10 @@ body {
   padding: 20px;
 }
 
+.board {
+  margin-bottom: 40px;
+}
+
 .cell {
   background: #7b7b7b;
   border: 1px solid #fff;
