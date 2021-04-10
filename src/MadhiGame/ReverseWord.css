@@ -1,12 +1,73 @@
 
-h1 { 
+.game2 h1 { 
     text-align: center;
+    font-family: "Bebas Neue";
+    font-size: 5vw;
+    margin: 50px;
 }
 
+.game2 h3 { 
+    text-align: center;
+    font-family: "Lato";
+    font-weight: 600;
+}
 
+.game2 .display-time { 
+    margin-bottom: 10vh;
+}
 
-.dashboard { 
+.game2 .display-word { 
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.game2 input { 
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    font-family: "Lato";
+    font-size: 20px;
+    width: 25vw;
+}
+
+.game2 h4 { 
+    text-align: center;
+    font-family: "Lato";
+    margin: 50px;
+}
+
+.game2 .score-header { 
+    margin-top: 10vh;
+    text-align: center;
+    position: static;
+}
+
+.game2 .btn { 
+    font-family: "Lato";
+    font-size: 1.2em;
+    padding: 15px;
+    float: center;
+    margin-right: 10px;
+}
+
+.game2 .start { 
+    margin-left: 48%;
+    margin-bottom: 0vh;
+}
+
+.game2 .game-header { 
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.game2 .dashboard { 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.game2 .exit-options { 
+    margin-bottom: 0vh;
 }

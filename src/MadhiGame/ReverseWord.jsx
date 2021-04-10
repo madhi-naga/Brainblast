@@ -4,7 +4,7 @@ import "./ReverseWord.css"
 import CalcScores from "../Helpers/CalcScores";
 
 const randomWords = require('random-words');
-const t = 4;
+const t = 40;
 
 export default class ReverseWord extends Component {
 
@@ -23,6 +23,7 @@ export default class ReverseWord extends Component {
     }
 
     static contextType = ScoreContext;
+
     componentDidMount() {
         this.setState({ currentword: randomWords(1)[0] });
         let timeLeftVar = this.secondsToTime(t);
@@ -91,6 +92,7 @@ export default class ReverseWord extends Component {
 
             if (document.getElementById('guess').value === this.reverse(this.state.currentword)) {
                 let len = document.getElementById('guess').value.length;
+                if (len > 7) len += 5;
                 this.context.setScore2(score + len);
             }
 
@@ -103,45 +105,50 @@ export default class ReverseWord extends Component {
         this.props.history.push('/menu');
         this.calcScores();
     }
+    wordcolor(){ 
+        if (this.state.currentword.length > 7)
+            return "#e33636"
+        else return "#000";
+    }
 
     render() {
         return (
-            <div>
-                <h1>Reverse Word</h1>
-                <h4>Reverse as many words as possible before the timer ends. Click Enter to submit each answer.
-                Red words count for double points!
-                </h4>
-                Seconds: {this.state.seconds}
-                {this.state.isStarted ? null : <button onClick={this.startTimer}>Start</button>}
-
-                <div className="dashboard"> 
-                {
-                    this.state.isStarted && this.state.seconds > 0 ?
-                        <div>
-                            <h3 className="display-word">{this.state.currentword}</h3>
-                            <form action="">
-                                <input
-                                    type="text"
-                                    id="guess"
-                                    placeholder="Enter the Reverse Word"
-                                    onKeyPress={this.handleEnter}
-                                />
-                            </form>
-                            <h3>Current Score: {this.context.score2}</h3>
-                        </div>
-                        : null
-                }
-                {
-                    this.state.seconds === 0 ?
-                        <div className="exit-options">
-                            <h3>Current Score: </h3>
-                            <button onClick={this.startTimer}>Try Again</button>
-                            <button onClick={this.handleExit}>Submit Score & Exit</button>
-                        </div>
-                        : null
-                }
+            <div className="game2">
+                <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" ></link>
+                <div className="game-header">
+                    <h1>Reverse Word</h1>
+                    <h4>Reverse as many words as possible before the timer ends. Click Enter to submit each answer.
+                    Red words add bonus points!</h4>
+                    <h3 className="display-time">Time Left: {this.state.seconds}</h3>
+                    {this.state.isStarted ? null : <button className="btn btn-dark start" onClick={this.startTimer}>Start</button>}
                 </div>
-
+                <div className="dashboard">
+                    {
+                        this.state.isStarted && this.state.seconds > 0 ?
+                            <div>
+                                <h3 className="display-word" style={{color: this.wordcolor() }}>{this.state.currentword}</h3>
+                                <form action="">
+                                    <input
+                                        type="text"
+                                        id="guess"
+                                        placeholder="Enter the Reverse Word"
+                                        onKeyPress={this.handleEnter}
+                                    />
+                                </form>
+                            </div>
+                            : null
+                    }
+                    {
+                        this.state.seconds === 0 ?
+                            <div className="exit-options">
+                                <button className="btn btn-dark" onClick={this.startTimer}>Try Again</button>
+                                <button className="btn btn-dark" onClick={this.handleExit}>Submit Score & Exit</button>
+                            </div>
+                            : null
+                    }
+                </div>
+                <h3 className="score-header">Current Score: {this.context.score2}</h3>
             </div>
         )
     }
