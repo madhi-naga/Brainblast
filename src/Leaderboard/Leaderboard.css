@@ -1,0 +1,47 @@
+.grid{
+    display: flex;
+    justify-content: center;
+}
+
+.table-bordered {
+	align-self: center;
+}
+
+.lead-header { 
+    text-align: center;
+    margin: 20px;
+    font-family: "Bebas Neue";
+}
+
+table {
+	width: 25vw;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 2px 20px 20px rgba(0,0,0,0.1);
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Lato";
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(0, 0, 0, 0.589);
+	color: rgb(255, 255, 255);
+    font-size: 1vw;
+}
+
+
+thead {
+    background-color: rgba(0, 0, 0, 0.63);
+    font-family: "Bebas Neue";
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+tr {
+    background-color: rgba(0, 0, 0, 0.507);
+}
