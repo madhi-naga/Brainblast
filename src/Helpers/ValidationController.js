@@ -1,5 +1,7 @@
 
 import ValidationSystem from "../Helpers/ValidationSystem";
+import axios from 'axios';
+const urlBackend = 'https://brainblast-be.herokuapp.com';
 
 function ValidationController(username,scoreContext){
     
@@ -13,7 +15,12 @@ function ValidationController(username,scoreContext){
             scoreContext.setError("The username you entered was too long. Enter a username 10 characters long or less.");
         }
         else{
-            scoreContext.setUsername(username);   
+            scoreContext.setUsername(username); 
+            axios.post(`${urlBackend}/score/new`, {
+                username: username
+            })
+            .then(resp => alert("Sucessfully created user"))
+            .catch(err => alert("Username invalid, try again"));  
         }
         return true;
     }

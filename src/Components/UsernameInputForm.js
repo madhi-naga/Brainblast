@@ -3,6 +3,7 @@ import {ScoreContext} from "../Contexts/ScoreContext";
 import {useContext} from "react";
 import ValidationController from "../Helpers/ValidationController";
 import {Redirect} from "react-router-dom";
+
 import "./UsernameInputForm.css";
 
 function UsernameInputForm() {
@@ -16,7 +17,7 @@ function UsernameInputForm() {
 
     const onChange = (e) => {
         setUsername(e.target.value);
-      };
+    };
     
     if (!checked){
         return (

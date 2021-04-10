@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { ScoreContext } from '../Contexts/ScoreContext'
 import "./ReverseWord.css"
 import CalcScores from "../Helpers/CalcScores";
+import axios from 'axios';
 
+const urlBackend = 'https://brainblast-be.herokuapp.com';
 const randomWords = require('random-words');
 const t = 40;
 
@@ -104,6 +106,8 @@ export default class ReverseWord extends Component {
     handleExit() {
         this.props.history.push('/menu');
         this.calcScores();
+
+        //axios.post()
     }
     wordcolor(){ 
         if (this.state.currentword.length > 7)
