@@ -326,6 +326,10 @@ class Board extends React.Component {
         });
     }
 
+    calcScores = () => {
+        CalcScores(1, this.context.score1, this.context);
+    }
+
     renderBoard(board) {
         return board.map((row) => {
             return row.map((cell) => {
@@ -373,7 +377,7 @@ class Board extends React.Component {
                 { this.state.gameOver &&
                     <div>
                         <button className="btn btn-dark" onClick={() => this.restart()}>Try Again</button>
-                        <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Return to Menu</Link>
+                        <Link to={"/menu"} onClick={this.calcScores} role="button" id="goMenu" className="btn btn-dark">Return to Menu</Link>
                     </div>
                 }
             </div>
