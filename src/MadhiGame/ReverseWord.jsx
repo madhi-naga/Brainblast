@@ -30,6 +30,7 @@ export default class ReverseWord extends Component {
         this.setState({ currentword: randomWords(1)[0] });
         let timeLeftVar = this.secondsToTime(t);
         this.setState({ time: timeLeftVar });
+        console.log(this.props.location.username);
     }
 
     secondsToTime(secs) {
@@ -107,7 +108,16 @@ export default class ReverseWord extends Component {
         this.props.history.push('/menu');
         this.calcScores();
 
-        //axios.post()
+        var params = {
+            username: this.props.location.username,
+            minigame_scores: {
+                minigame_2: this.context.score2
+            }
+        }
+
+        axios.post(`${urlBackend}/score/update`, params)
+          .then( resp => alert("Updated Score"))
+          .catch(error => console.log(error));
     }
     wordcolor(){ 
         if (this.state.currentword.length > 7)

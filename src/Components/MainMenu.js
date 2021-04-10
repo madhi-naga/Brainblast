@@ -20,7 +20,7 @@ function MainMenu(){
                 <h1 className ="titleHeader">BrainBlast!</h1>
                 <div className = "btnContainer">
                     <Link to={"/game1"} role="button" id ="g1" className="btn btn-dark">Game 1 </Link>
-                    <Link to={"/game2"} role="button" id ="g2" className="btn btn-dark">Game 2 </Link>
+                    <Link to={{pathname:"/game2", username: scoreContext.username}} role="button" id ="g2" className="btn btn-dark">Game 2 </Link>
                     <Link to={"/game3"} role="button" id ="g3" className="btn btn-dark">Game 3 </Link>
                     <Link to={"/game4"} role="button" id ="g4" className="btn btn-dark">Game 4 </Link>
                     <Link to={"/game5"} role="button" id ="g5" className="btn btn-dark">Game 5 </Link>
