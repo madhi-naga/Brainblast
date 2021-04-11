@@ -4,6 +4,7 @@ import {ScoreContext} from "../Contexts/ScoreContext";
 import CalcScores from "../Helpers/CalcScores";
 import { Link } from "react-router-dom";
 import "./MemoryGame.css";
+import axios from 'axios';
 
 function MemoryGame(){
 
@@ -15,6 +16,7 @@ function MemoryGame(){
     const [previous,setPrevious] = useState(null);
     const [reset,setReset] = useState(0);
     const scoreContext = useContext(ScoreContext);
+    const urlBackend = 'https://brainblast-be.herokuapp.com';
     var randomWords = require('random-words');
 
     useEffect(() => {
@@ -81,6 +83,18 @@ function MemoryGame(){
     function calcScores(){
         var newScore = currScore;
         CalcScores(3,newScore,scoreContext);
+        // this.props.history.push('/menu');
+
+        var params = {
+            username: scoreContext.username,
+            minigame_scores: {
+                minigame_3: newScore
+            }
+        }
+
+        axios.post(`${urlBackend}/score/update`, params)
+          .then( resp => alert("Updated Score"))
+          .catch(error => console.log(error));
     }
 
     function onClickNew(){
