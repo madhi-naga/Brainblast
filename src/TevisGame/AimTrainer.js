@@ -14,6 +14,7 @@ function AimTrainer() {
   const [timer, setTimer] = useState(0);
   const scoreContext = useContext(ScoreContext);
   const [bestScore, setBestScore] = useState(0);
+  var firstRun = 1;
   
 
   function getPosition(){
@@ -50,17 +51,32 @@ function AimTrainer() {
   };
 
   function saveScores() {
-    CalcScores(5, bestScore, scoreContext);
-    var params = {
-      username: scoreContext.username,
-      minigame_scores: {
-          minigame_5: bestScore
+    if (firstRun == 0) {
+      CalcScores(5, bestScore, scoreContext);
+      var params = {
+        username: scoreContext.username,
+        minigame_scores: {
+            minigame_5: bestScore
+        }
       }
+      axios.post(`${urlBackend}/score/update`, params)
+        .then( resp => alert("Updated Score"))
+        .catch(error => console.log(error));
+      document.getElementById("gotoMenu").click();
+    } else {
+      CalcScores(5, score, scoreContext);
+      var params = {
+        username: scoreContext.username,
+        minigame_scores: {
+            minigame_5: score
+        }
+      }
+      axios.post(`${urlBackend}/score/update`, params)
+        .then( resp => alert("Updated Score"))
+        .catch(error => console.log(error));
+      document.getElementById("gotoMenu").click();
     }
-    axios.post(`${urlBackend}/score/update`, params)
-      .then( resp => alert("Updated Score"))
-      .catch(error => console.log(error));
-    document.getElementById("gotoMenu").click();
+   
   }
 
   if (timer > 0 && score < 100) {
@@ -112,6 +128,7 @@ function AimTrainer() {
       <div className="gameContainer"> {
         <div className="buttonContainer">
         <button id="startButton" className="btn btn-dark" onClick={() => {
+          firstRun = 0;
           updateBestScore();
           setScore(0);
           resetTimer();
