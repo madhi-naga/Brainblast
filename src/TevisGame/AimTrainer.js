@@ -4,7 +4,8 @@ import randomNumber from "./RandomNumber";
 import { Link } from "react-router-dom";
 import {ScoreContext} from "../Contexts/ScoreContext";
 import CalcScores from "../Helpers/CalcScores";
-
+import axios from 'axios';
+const urlBackend = 'https://brainblast-be.herokuapp.com';
 
 function AimTrainer() {
   const [left, setLeft] = useState(null);
@@ -12,7 +13,8 @@ function AimTrainer() {
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(0);
   const scoreContext = useContext(ScoreContext);
-  var bestScore = 0;
+  const [bestScore, setBestScore] = useState(0);
+  
 
   function getPosition(){
     let leftPosition = randomNumber(0, 94);
@@ -27,17 +29,17 @@ function AimTrainer() {
     }, 1000 * i);
   };
 
-  function setBestScore() {
+  function updateBestScore() {
     if (score > bestScore) {
-      bestScore = score;
-    }
+      setBestScore(score);
+    } 
   }
 
   function resetTimer(){
     setTimer(40);
   };
 
-  function launchTimer(){
+  function startTimer(){
     for (let i = 40; i > 0; i--) {
       decreaseTimer(i);
     }
@@ -49,6 +51,15 @@ function AimTrainer() {
 
   function saveScores() {
     CalcScores(5, bestScore, scoreContext);
+    var params = {
+      username: this.props.location.username,
+      minigame_scores: {
+          minigame_5: this.context.score5
+      }
+    }
+    axios.post(`${urlBackend}/score/update`, params)
+      .then( resp => alert("Updated Score"))
+      .catch(error => console.log(error));
     document.getElementById("gotoMenu").click();
   }
 
@@ -101,14 +112,14 @@ function AimTrainer() {
       <div className="gameContainer"> {
         <div className="buttonContainer">
         <button id="startButton" className="btn btn-dark" onClick={() => {
-          setBestScore(score);
+          updateBestScore();
           setScore(0);
           resetTimer();
-          launchTimer();
+          startTimer();
           getPosition();
         }}>Start</button>
         <button id="exitButton" className="btn btn-dark" style={{width: 'auto'}} onClick={() => {
-          setBestScore();
+          updateBestScore();
           saveScores();
         }}>Save Scores and Exit</button>
         <Link to={"/menu"} role="button" id="gotoMenu" className="btn btn-dark btn-large">Exit Without Saving</Link>
