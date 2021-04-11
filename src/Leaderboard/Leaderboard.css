@@ -45,3 +45,7 @@ thead {
 tr {
     background-color: rgba(0, 0, 0, 0.507);
 }
+
+tr:hover{ 
+    background-color: rgba(0, 0, 0, 0.698);
+}

@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { ScoreContext } from '../Contexts/ScoreContext'
 import "./ReverseWord.css"
 import CalcScores from "../Helpers/CalcScores";
+import axios from 'axios';
 
+const urlBackend = 'https://brainblast-be.herokuapp.com';
 const randomWords = require('random-words');
 const t = 40;
 
@@ -28,6 +30,7 @@ export default class ReverseWord extends Component {
         this.setState({ currentword: randomWords(1)[0] });
         let timeLeftVar = this.secondsToTime(t);
         this.setState({ time: timeLeftVar });
+        console.log(this.props.location.username);
     }
 
     secondsToTime(secs) {
@@ -104,6 +107,17 @@ export default class ReverseWord extends Component {
     handleExit() {
         this.props.history.push('/menu');
         this.calcScores();
+
+        var params = {
+            username: this.props.location.username,
+            minigame_scores: {
+                minigame_2: this.context.score2
+            }
+        }
+
+        axios.post(`${urlBackend}/score/update`, params)
+          .then( resp => alert("Updated Score"))
+          .catch(error => console.log(error));
     }
     wordcolor(){ 
         if (this.state.currentword.length > 7)
