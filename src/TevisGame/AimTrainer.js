@@ -52,9 +52,9 @@ function AimTrainer() {
   function saveScores() {
     CalcScores(5, bestScore, scoreContext);
     var params = {
-      username: this.props.location.username,
+      username: scoreContext.username,
       minigame_scores: {
-          minigame_5: this.context.score5
+          minigame_5: bestScore
       }
     }
     axios.post(`${urlBackend}/score/update`, params)
