@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const urlBackend = 'https://brainblast-be.herokuapp.com';
 const randomWords = require('random-words');
-const t = 40;
+const t = 20;
 
 export default class ReverseWord extends Component {
 
@@ -16,21 +16,23 @@ export default class ReverseWord extends Component {
             currentword: "",
             seconds: t,
             isStarted: false,
+            currScore: 0,
+            bestScore: 0
         };
         this.timer = 0;
         this.handleEnter = this.handleEnter.bind(this);
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
         this.handleExit = this.handleExit.bind(this);
+        this.handleCleanExit = this.handleCleanExit.bind(this);
     }
 
     static contextType = ScoreContext;
 
     componentDidMount() {
-        this.setState({ currentword: randomWords(1)[0] });
+        this.setState({ currentword: randomWords(1)[0], bestScore: this.context.score2 });
         let timeLeftVar = this.secondsToTime(t);
         this.setState({ time: timeLeftVar });
-        console.log(this.props.location.username);
     }
 
     secondsToTime(secs) {
@@ -59,13 +61,11 @@ export default class ReverseWord extends Component {
     }
 
     startTimer() {
-        this.context.setScore2(0);
         this.setRandomWord();
 
         let timeLeftVar = this.secondsToTime(t);
-        this.setState({ seconds: t, time: timeLeftVar });
+        this.setState({ seconds: t, time: timeLeftVar, isStarted: true, currScore: 0 });
         this.timer = setInterval(this.countDown, 1000);
-        this.setState({ isStarted: true })
     }
 
 
@@ -79,24 +79,29 @@ export default class ReverseWord extends Component {
 
         // Check if we're at zero.
         if (seconds === 0) {
+            var curr = this.state.currScore;
             clearInterval(this.timer);
-            this.setState({ isEnded: true });
+            if(curr > this.state.bestScore){
+                this.setState({ bestScore: curr, isEnded: true });
+            }
+            else
+                this.setState({ isEnded: true });
         }
     }
 
     calcScores = () => {
-        CalcScores(2, this.context.score2, this.context);
+        CalcScores(2, this.state.bestScore, this.context);
     }
 
     handleEnter = (e) => {
-        var score = this.context.score2
+        var score = this.state.currScore;
         if (e.key === 'Enter') {
             e.preventDefault();
 
             if (document.getElementById('guess').value === this.reverse(this.state.currentword)) {
                 let len = document.getElementById('guess').value.length;
                 if (len > 7) len += 5;
-                this.context.setScore2(score + len);
+                this.setState({currScore: score + len});
             }
 
             this.setRandomWord();
@@ -107,11 +112,12 @@ export default class ReverseWord extends Component {
     handleExit() {
         this.props.history.push('/menu');
         this.calcScores();
+        this.context.setScore2(this.state.bestScore); 
 
         var params = {
             username: this.props.location.username,
             minigame_scores: {
-                minigame_2: this.context.score2
+                minigame_2: this.state.bestScore
             }
         }
 
@@ -119,11 +125,23 @@ export default class ReverseWord extends Component {
           .then( resp => alert("Updated Score"))
           .catch(error => console.log(error));
     }
+
+    handleCleanExit() {
+        this.props.history.push('/menu');
+    }
+
     wordcolor(){ 
         if (this.state.currentword.length > 7)
             return "#e33636"
         else return "#000";
     }
+
+    timecolor(){ 
+        if (this.state.seconds <= 10)
+            return "#e33636"
+        else return "#000";
+    }
+
 
     render() {
         return (
@@ -134,7 +152,7 @@ export default class ReverseWord extends Component {
                     <h1>Word Reverse</h1>
                     <h4>Reverse as many words as possible before the timer ends. Click Enter to submit each answer.
                     Red words add bonus points!</h4>
-                    <h3 className="display-time">Time Left: {this.state.seconds}</h3>
+                    <h3 className="display-time" style={{color: this.timecolor() }} >Time Left: {this.state.seconds}</h3>
                     {this.state.isStarted ? null : <button className="btn btn-dark start" onClick={this.startTimer}>Start</button>}
                 </div>
                 <div className="dashboard">
@@ -158,11 +176,13 @@ export default class ReverseWord extends Component {
                             <div className="exit-options">
                                 <button className="btn btn-dark" onClick={this.startTimer}>Try Again</button>
                                 <button className="btn btn-dark" onClick={this.handleExit}>Submit Score & Exit</button>
+                                <button className="btn btn-dark" onClick={this.handleCleanExit}>Exit Without Saving</button>
                             </div>
                             : null
                     }
                 </div>
-                <h3 className="score-header">Current Score: {this.context.score2}</h3>
+                <h3 className="score-header">Current Score: {this.state.currScore}</h3>
+                <h3 className="best-header">Best Score: {this.state.bestScore}</h3>
             </div>
         )
     }

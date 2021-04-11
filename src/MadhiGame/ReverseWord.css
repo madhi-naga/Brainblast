@@ -41,6 +41,14 @@
     margin-top: 10vh;
     text-align: center;
     position: static;
+    color: rgb(32, 94, 136);
+}
+
+.game2 .best-header { 
+    margin-top: 2vh;
+    text-align: center;
+    position: static;
+    color: rgb(23, 138, 23);
 }
 
 .game2 .btn { 
