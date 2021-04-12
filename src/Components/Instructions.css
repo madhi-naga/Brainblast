@@ -23,3 +23,15 @@
   font-family: "Lato";
   font-size: 2vh;
 }
+
+#instImage {
+  width: 25vw;
+  margin-left: 37.5%;
+  border: 3px solid black;
+}
+
+#instImage2 {
+  width: 15vw;
+  margin-left: 42.5%;
+  border: 3px solid black;
+}

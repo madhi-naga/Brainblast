@@ -1,3 +1,9 @@
+import minesweeper from "../Images/minesweeper.png";
+import wordreverse from "../Images/wordreverse.png";
+import memorygame from "../Images/memorygame.png";
+import numberhunt from "../Images/numberhunt.png";
+import aimtrainer from "../Images/aimtrainer.png";
+
 import "./Instructions.css";
 
 function Instructions() {
@@ -13,16 +19,21 @@ function Instructions() {
         <div id="instContent">Brainblast is a collection of 5 mini-games testing cognitive ability. Your scores on each game are totaled and posted on the leaderboard.</div>
         <div id="instContent">Scores are weighted in order of how well you did on each game (e.g. 100% weighting for your top scoring game, 80% weighting for your 2nd best scoring game, etc.).</div>
         <div id="instHeader">Game 1 Instructions: Minesweeper</div>
+        <img id="instImage2"src={minesweeper}></img>
         <div id="instContent">The classic game of minesweeper. Click each grid to reveal what's underneath.</div>
         <div id="instContent">Grids can either contain a mine, or a number representing the number of adjacent mines. Reveal all non-mine grids to win!</div>
         <div id="instHeader">Game 2 Instructions: Word Reverse</div>
+        <img id="instImage"src={wordreverse}></img>
         <div id="instContent"> Reverse as many words as possible before the timer ends. Red words add bonus points!</div>
         <div id="instHeader">Game 3 Instructions: Memory Game</div>
+        <img id="instImage"src={memorygame}></img>
         <div id="instContent"> You will be shown words or numbers. If you've seen a word or number during the game, click seen, if you haven't, click new.</div>
         <div id="instContent">Get as many points as you can before you get 3 wrong!</div>
         <div id="instHeader">Game 4 Instructions: Number Hunt</div>
+        <img id="instImage"src={numberhunt}></img>
         <div id="instContent"> Enter the sum of the numbers floating on screen to earn points. More numbers will appear as you earn more points!</div>
         <div id="instHeader">Game 5 Instructions: Aim Trainer</div>
+        <img id="instImage"src={aimtrainer}></img>
         <div id="instContent"> Click the circles as they appear on the screen. Click as many as you can before time runs out!</div>
       </div>
     );
