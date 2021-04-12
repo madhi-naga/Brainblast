@@ -1,0 +1,25 @@
+#instHeader {
+  padding-top: 2%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: 3vh;
+}
+
+#instContent {
+  padding-top: 0.5%;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 2vh;
+}

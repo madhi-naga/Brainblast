@@ -9,7 +9,7 @@
 }
 
 #currScore {
-  padding-top: 8%;
+  padding-top: 12%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +23,10 @@
   text-align: center;
   font-family: "Lato";
   font-size: 4vh;
+}
+
+#regButton {
+  height: 4vh;
 }
 
 #prompt {

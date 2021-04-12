@@ -136,7 +136,8 @@ function MemoryGame() {
                     <button className="btn btn-dark" onClick={onClickSeen}>Seen</button>
                     <button className="btn btn-dark" onClick={onClickNew}>New</button>
                 </div>
-                <h1 id="currScore">Current Score: {currScore}</h1>
+                <br></br>
+                <h1 id="lives">Current Score: {currScore}</h1>
                 <h1 id="lives">Lives Remaining: {lives}</h1>
             </div>
         )
@@ -169,8 +170,8 @@ function MemoryGame() {
                 <h1 id="gameOverHeader">Game Over</h1>
                 <h1 id="endScore">Your Score: {currScore}</h1>
                 <div className="buttonContainerOver">
-                    <button className="btn btn-dark" onClick={onClickReset}>Play again</button>
-                    <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Return to Menu </Link>
+                    <button className="btn btn-dark" id="regButton" onClick={onClickReset}>Play again</button>
+                    <Link to={"/menu"} role="button" id="regButton" className="btn btn-dark">Return to Menu </Link>
                 </div>
             </div>
         )
