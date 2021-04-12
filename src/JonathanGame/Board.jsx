@@ -3,6 +3,9 @@ import Cell from './Cell';
 import { ScoreContext } from '../Contexts/ScoreContext'
 import CalcScores from "../Helpers/CalcScores";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
+const urlBackend = 'https://brainblast-be.herokuapp.com';
 
 class Board extends React.Component {
     constructor(props) {
@@ -17,6 +20,12 @@ class Board extends React.Component {
     }
 
     static contextType = ScoreContext;
+
+    componentDidMount() {
+        this.setState({
+            bestScore: this.context.score1
+        });
+    }
 
     initBoard(height, width, mines) {
         var board = [];
@@ -327,7 +336,24 @@ class Board extends React.Component {
     }
 
     calcScores = () => {
-        CalcScores(1, this.context.score1, this.context);
+        let subScore = this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore;
+        CalcScores(1, subScore, this.context);
+    }
+
+    handleExit() {
+        let subScore = this.state.score > this.state.bestScore ? this.state.score : this.state.bestScore;
+        this.calcScores();
+
+        var params = {
+            username: this.props.username,
+            minigame_scores: {
+                minigame_1: subScore
+            }
+        }
+
+        axios.post(`${urlBackend}/score/update`, params)
+            .then( resp => alert("Updated Score"))
+            .catch(error => console.log(error));
     }
 
     renderBoard(board) {
@@ -356,7 +382,10 @@ class Board extends React.Component {
                         Minesweeper
                     </h1>
                     <span className="info">
-                        Score: {this.state.score}
+                        Current Score: {this.state.score}
+                    </span>
+                    <span className="info">
+                        Best Score: {this.state.bestScore}
                     </span>
                     <br/>
                     {
@@ -377,7 +406,8 @@ class Board extends React.Component {
                 { this.state.gameOver &&
                     <div>
                         <button className="btn btn-dark" onClick={() => this.restart()}>Try Again</button>
-                        <Link to={"/menu"} onClick={this.calcScores} role="button" id="goMenu" className="btn btn-dark">Return to Menu</Link>
+                        <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Exit Without Saving</Link>
+                        <Link to={"/menu"} onClick={() => this.handleExit()} role="button" id="goMenu" className="btn btn-dark">Submit Score & Exit</Link>
                     </div>
                 }
             </div>

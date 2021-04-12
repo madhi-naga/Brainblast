@@ -19,7 +19,7 @@ function MainMenu(){
                 ></link>
                 <h1 className ="titleHeader">BrainBlast!</h1>
                 <div className = "btnContainer">
-                    <Link to={"/game1"} role="button" id ="g1" className="btn btn-dark">Game 1 </Link>
+                    <Link to={{pathname:"/game1", username: scoreContext.username}} role="button" id ="g1" className="btn btn-dark">Game 1 </Link>
                     <Link to={{pathname:"/game2", username: scoreContext.username}} role="button" id ="g2" className="btn btn-dark">Game 2 </Link>
                     <Link to={"/game3"} role="button" id ="g3" className="btn btn-dark">Game 3 </Link>
                     <Link to={"/game4"} role="button" id ="g4" className="btn btn-dark">Game 4 </Link>
@@ -27,7 +27,7 @@ function MainMenu(){
                 </div>
                 <h1 className ="username">Logged in as {scoreContext.username}</h1>
                 <h1 className ="totalScore">Total Score: {scoreContext.totalScore}</h1>
-                
+
                 <h1 className ="score">Game 1 Score: {scoreContext.score1} | Weighted Score: {scoreContext.weightedScore1} </h1>
                 <h1 className ="score">Game 2 Score: {scoreContext.score2} | Weighted Score: {scoreContext.weightedScore2}</h1>
                 <h1 className ="score">Game 3 Score: {scoreContext.score3} | Weighted Score: {scoreContext.weightedScore3}</h1>
