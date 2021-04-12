@@ -36,7 +36,7 @@
 }
 
 .username {
-  padding-top: 5%;
+  padding-top: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,6 +63,6 @@
   justify-content: center;
   text-align: center;
   font-family: "Lato";
-  font-size: 3vh;
+  font-size: 2vh;
   padding-bottom: 1%;
 }
