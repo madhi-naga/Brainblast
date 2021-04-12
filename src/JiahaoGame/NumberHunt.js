@@ -3,6 +3,7 @@ import { useContext} from "react";
 import {ScoreContext} from "../Contexts/ScoreContext";
 import CalcScores from "../Helpers/CalcScores";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function NumberHunt(){
 
@@ -13,6 +14,7 @@ function NumberHunt(){
 
     const canvasRef = React.useRef(null)
     const scoreContext = useContext(ScoreContext);
+    const urlBackend = 'https://brainblast-be.herokuapp.com';
 
     React.useEffect(() => {
         const canvas = canvasRef.current
@@ -60,6 +62,22 @@ function NumberHunt(){
           }          
         }
       }
+
+      function calcScores() {
+        var newScore = score;
+        CalcScores(4, newScore, scoreContext);
+
+        var params = {
+            username: scoreContext.username,
+            minigame_scores: {
+                minigame_4: newScore
+            }
+        }
+
+        axios.post(`${urlBackend}/score/update`, params)
+            .then(resp => alert("Updated Score"))
+            .catch(error => console.log(error));
+    }
 
       function generateNumber(){
         var dir1 = 1;
@@ -202,9 +220,9 @@ function NumberHunt(){
         function()
         {var sum = document.getElementById("sum").value;
         if (sum == answer) {
-          document.getElementById("result").innerHTML = "Correct, score + 1";
+          document.getElementById("result").innerHTML = "Correct, score + 10";
           gameLevel = gameLevel + 1;
-          score = score + 1;
+          score = score + 10;
           if (score > historyScore){
               historyScore = score;
           }
@@ -222,7 +240,7 @@ function NumberHunt(){
 
         document.getElementById("save").onclick = 
         function(){
-            CalcScores(4, historyScore, scoreContext);
+            calcScores();
             document.getElementById("goMenu").click();
         }
 
