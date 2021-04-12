@@ -17,14 +17,14 @@ function AimTrainer() {
   var firstRun = 1;
   
 
-  function getPosition(){
+  function getPos(){
     let leftPosition = randomNumber(0, 94);
     let topPosition = randomNumber(0, 85);
     setLeft(leftPosition);
     setTop(topPosition);
   };
 
-  function decreaseTimer(i){
+  function runTimer(i){
     setTimeout(() => {
       setTimer(40 - i);
     }, 1000 * i);
@@ -42,7 +42,7 @@ function AimTrainer() {
 
   function startTimer(){
     for (let i = 40; i > 0; i--) {
-      decreaseTimer(i);
+      runTimer(i);
     }
   };
 
@@ -81,18 +81,18 @@ function AimTrainer() {
 
   if (timer > 0 && score < 100) {
   return (
-    <div className="aimTrainerMainContainer">
+    <div className="ATmainContainer">
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
-      <h1 id="titleHeader" style={{color: 'black'}}>Aim Trainer!</h1>
-      <h3 style={{color: 'black'}}>Click up to 100 targets as fast as possible in 40 seconds!</h3>
+      <h1 id="titleHeader">Aim Trainer!</h1>
+      <h3>Click up to 100 targets as fast as possible in 40 seconds!</h3>
       <div className="statsAimTrainerContainer">
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" 
         rel="stylesheet"></link>
-        <h3 id="timer" style={{color: 'black'}}> Time: <span style={{ color: "black"}}>{timer}</span></h3>
-        <h3 id="currScore" style={{color: 'black'}}> Score: <span style={{ color: "black"}}>{score}/100</span></h3>
-        <h3 id="currScore" style={{color: 'black'}}> Best Score: <span style={{ color: "black"}}>{bestScore}/100</span></h3>
+        <h3 id="timer"> Time: <span>{timer}</span></h3>
+        <h3 id="currScore"> Score: <span>{score}/100</span></h3>
+        <h3 id="currScore"> Best Score: <span>{bestScore}/100</span></h3>
       </div>
-      <div className="gameContainer">
+      <div className="ATgameContainer">
       {
         <div className="target"
            style={{
@@ -101,7 +101,7 @@ function AimTrainer() {
              'top': `${top}%`
            }}
            onClick={(event) => {
-             getPosition();
+             getPos();
              countShot();
            }}
         >
@@ -114,18 +114,18 @@ function AimTrainer() {
     setTimer(0);
   } else {
     return (
-      <div className="aimTrainerMainContainer">
+      <div className="ATmainContainer">
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
-      <h1 id="titleHeader" style={{color: 'black'}}>Aim Trainer!</h1>
-      <h3 style={{color: 'black'}}>Click up to 100 targets as fast as possible in 40 seconds!</h3>
-      <div className="statsAimTrainerContainer">
+      <h1 id="titleHeader">Aim Trainer!</h1>
+      <h3>Click up to 100 targets as fast as possible in 40 seconds!</h3>
+      <div className="ATstatsContainer">
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" 
         rel="stylesheet"></link>
-        <h3 id="timer" style={{color: 'black'}}> Time: <span style={{ color: "black"}}>{timer}</span></h3>
-        <h3 id="currScore" style={{color: 'black'}}> Score: <span style={{ color: "black"}}>{score}/100</span></h3>
-        <h3 id="currScore" style={{color: 'black'}}> Best Score: <span style={{ color: "black"}}>{bestScore}/100</span></h3>
+        <h3 id="timer"> Time: <span>{timer}</span></h3>
+        <h3 id="currScore"> Score: <span>{score}/100</span></h3>
+        <h3 id="currScore"> Best Score: <span>{bestScore}/100</span></h3>
       </div>
-      <div className="gameContainer"> {
+      <div className="ATgameContainer"> {
         <div className="buttonContainer">
         <button id="startButton" className="btn btn-dark" onClick={() => {
           firstRun = 0;
@@ -133,7 +133,7 @@ function AimTrainer() {
           setScore(0);
           resetTimer();
           startTimer();
-          getPosition();
+          getPos();
         }}>Start</button>
         <button id="exitButton" className="btn btn-dark" style={{width: 'auto'}} onClick={() => {
           updateBestScore();
