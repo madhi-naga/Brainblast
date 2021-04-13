@@ -4,8 +4,6 @@ import Navbar from "./Components/NavBar";
 import Leaderboard from "./Leaderboard/Leaderboard";
 import Instructions from "./Components/Instructions";
 import UsernameInputForm from "./Components/UsernameInputForm";
-import GameTest from "./JasperGame/GameTest";
-import GameTest2 from "./JasperGame/GameTest2";
 import MemoryGame from "./JasperGame/MemoryGame";
 import NumberHunt from "./JiahaoGame/NumberHunt";
 import Minesweeper from "./JonathanGame/Minesweeper";

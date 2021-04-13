@@ -26,7 +26,7 @@ function MainMenu(){
                     <Link to={"/game5"} role="button" id ="g5" className="btn btn-dark">Game 5 </Link>
                 </div>
                 <h1 className ="username">Logged in as {scoreContext.username}</h1>
-                <h1 className ="totalScore">Total Score: {scoreContext.totalScore}</h1>
+                <h1 className ="totalScore">Total Score: {(scoreContext.totalScore).toFixed(1)}</h1>
 
                 <h1 className ="score">Game 1 Score: {scoreContext.score1} | Weighted Score: {scoreContext.weightedScore1} </h1>
                 <h1 className ="score">Game 2 Score: {scoreContext.score2} | Weighted Score: {scoreContext.weightedScore2}</h1>

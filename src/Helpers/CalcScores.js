@@ -51,7 +51,7 @@ function CalcScores(gameID,score,scoreContext){
     var totalScore = 0;
 
     for (var i = 0; i < 5; i++){
-        var newScore = Math.round((scoreArray[i]-scoreArray[i]*(ranks[i]*0.2))*10)/10;
+        var newScore = Math.round((scoreArray[i]-scoreArray[i]*(ranks[i]*0.2))*10.0)/10.0;
         totalScore+=newScore;
         switch(i){
             case 0:

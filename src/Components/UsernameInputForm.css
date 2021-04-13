@@ -18,3 +18,13 @@
   height: 3vh;
   padding-top: 0vh;
 }
+
+#creditsLabel {
+  margin-top: 30vh;
+  font-family: "Lato";
+  font-size: 1.5vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+}
