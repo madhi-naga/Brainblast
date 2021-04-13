@@ -64,7 +64,7 @@ function NumberHunt(){
       }
 
       function calcScores() {
-        var newScore = score;
+        var newScore = historyScore;
         CalcScores(4, newScore, scoreContext);
 
         var params = {
