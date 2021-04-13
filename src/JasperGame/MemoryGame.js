@@ -121,7 +121,7 @@ function MemoryGame() {
     function onClickReset() {
         setReset(reset + 1);
     }
-    if (lives > 0 && currScore < 50) {
+    if (lives > 0 && currScore < 100) {
         return (
             <div id="MemoryGameDisplay">
                 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
