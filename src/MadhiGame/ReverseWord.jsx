@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const urlBackend = 'https://brainblast-be.herokuapp.com';
 const randomWords = require('random-words');
-const t = 20;
+const t = 25;
 
 export default class ReverseWord extends Component {
 

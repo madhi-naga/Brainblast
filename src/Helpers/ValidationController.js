@@ -19,8 +19,13 @@ function ValidationController(username,scoreContext){
             axios.post(`${urlBackend}/score/new`, {
                 username: username
             })
-            .then(resp => alert("Sucessfully created user"))
-            .catch(err => alert("Username invalid, try again"));  
+            .then(resp => {
+                //alert("Sucessfully created user");
+            })
+            .catch(err => {
+                scoreContext.setError("The username is already taken, try again"); 
+                scoreContext.setUsername(null);
+            });  
         }
         return true;
     }
