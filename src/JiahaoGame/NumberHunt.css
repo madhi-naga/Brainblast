@@ -1,0 +1,50 @@
+#NumberHuntDisplay { 
+    width: 50%;
+    margin: 0 auto;
+    font-family: "Lato";
+    font-size: 18px;
+}
+
+.nh-container h1 { 
+    font-family: "Bebas Neue";
+    text-align: center;
+    padding: 20px;
+}
+
+.nh-container p { 
+    font-size: 22px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.nh-container label { 
+    padding-right: 5px;
+    margin-left: 10vw;
+}
+
+.nh-container input { 
+    margin-left: 5vw;
+    width: 10vw;
+}
+
+canvas { 
+    background-color: rgba(0, 0, 0, 0.13);
+    border-radius: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#NumberHuntDisplay .btn.btn-dark { 
+    margin: 0 auto;
+    display: table;
+}
+
+.btn.btn-outline-dark { 
+    background-color: rgb(39, 39, 39);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+}
