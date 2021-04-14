@@ -405,8 +405,7 @@ class Board extends React.Component {
             </div>
                 { this.state.gameOver &&
                     <div>
-                        <button className="btn btn-dark" onClick={() => this.restart()}>Try Again</button>
-                        <Link to={"/menu"} role="button" id="goMenu" className="btn btn-dark">Exit Without Saving</Link>
+                        <button className="btn btn-dark" style={{'margin-right': "10px"}} onClick={() => this.restart()}>Try Again</button>
                         <Link to={"/menu"} onClick={() => this.handleExit()} role="button" id="goMenu" className="btn btn-dark">Submit Score & Exit</Link>
                     </div>
                 }
