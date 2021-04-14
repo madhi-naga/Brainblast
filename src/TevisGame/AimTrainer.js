@@ -85,7 +85,7 @@ function AimTrainer() {
       <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"></link>
       <h1 id="titleHeader">Aim Trainer!</h1>
       <h3>Click up to 100 targets as fast as possible in 40 seconds!</h3>
-      <div className="statsAimTrainerContainer">
+      <div className="ATstatsContainer">
       <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" 
         rel="stylesheet"></link>
         <h3 id="timer"> Time: <span>{timer}</span></h3>
